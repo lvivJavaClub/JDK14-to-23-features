@@ -1,4 +1,4 @@
-# JDK14-15-features
+# JDK14-15-16-features
 
 ## Prepeare
 
@@ -11,14 +11,14 @@ sdk use java 14.0.2-open
 
 * Link to JDK14 features https://openjdk.java.net/projects/jdk/14/
 * Link to JDK15 features https://openjdk.java.net/projects/jdk/15/
+* Link to JDK16 features https://openjdk.java.net/projects/jdk/16/
 
-
-# JEP 358: Helpful NullPointerExceptions
+## JEP 358: Helpful NullPointerExceptions
 
 add VM param `-XX:+ShowCodeDetailsInExceptionMessages`
 
 
-# JEP 343: Packaging Tool (Incubator)
+## JEP 343: Packaging Tool (Incubator)
 
 ```bash
 mvn clean javafx:run
