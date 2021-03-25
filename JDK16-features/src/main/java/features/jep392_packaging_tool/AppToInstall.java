@@ -15,10 +15,10 @@ import javax.swing.JLabel;
 import lombok.SneakyThrows;
 
 /**
- * mvn clean package jpackage -i target -n AppToInstall --main-jar JDK16-features-1.0-SNAPSHOT.jar  --main-class features.jep392_packaging_tool.AppToInstall --java-options
+ * mvn clean package
+ * jpackage -i target -n AppToInstall --main-jar JDK16-features-1.0-SNAPSHOT.jar  --main-class features.jep392_packaging_tool.AppToInstall --java-options
  * "--enable-preview" install and enjoy:)
  */
-
 public class AppToInstall extends JFrame {
 
   public AppToInstall() {

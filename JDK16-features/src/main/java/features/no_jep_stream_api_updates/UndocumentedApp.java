@@ -14,22 +14,29 @@ public class UndocumentedApp {
     counterEchos.add("Damn! Stop the count!");
     counterEchos.forEach(System.out::println);
 
-    // expand impl
+    testMultiMap();
+
+    final var flat = Stream.of("1", "2", List.of("3", "4", "5", List.of("6", "7",  List.of("6", "7"))))
+        .mapMulti(UndocumentedApp::expandIterable)
+        .toList();
+
+    System.out.println(flat);
   }
 
   // https://bugs.openjdk.java.net/browse/JDK-8180352
   public static List<String> gimmeSomeList(int start, int end) {
     return IntStream.rangeClosed(start, end)
         .mapToObj("I am #%d"::formatted)
-        .collect(Collectors.toList());
+        .collect(Collectors.toUnmodifiableList());
   }
 
   //https://download.java.net/java/early_access/jdk16/docs/api/java.base/java/util/stream/Stream.html#mapMulti(java.util.function.BiConsumer)
   public static void testMultiMap(){
+
     Stream.of("Java", "Python", "JavaScript", "C#", "Ruby")
-        .<Integer>mapMulti((str, consumer) -> {
+        .<String>mapMulti((str, consumer) -> {
           if (str.length() > 4) {
-            consumer.accept(str.length());  // lengths larger than 4
+            consumer.accept(str + "222");  // lengths larger than 4
           }
         })
         .forEach(i -> System.out.print(i + " "));
