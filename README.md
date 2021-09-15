@@ -12,6 +12,7 @@ sdk use java 14.0.2-open
 * Link to JDK14 features https://openjdk.java.net/projects/jdk/14/
 * Link to JDK15 features https://openjdk.java.net/projects/jdk/15/
 * Link to JDK16 features https://openjdk.java.net/projects/jdk/16/
+* Link to JDK17 features https://openjdk.java.net/projects/jdk/17/
 
 ## JEP 358: Helpful NullPointerExceptions
 
