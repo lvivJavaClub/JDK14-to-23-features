@@ -5,27 +5,26 @@ import java.time.Instant;
 import java.time.InstantSource;
 import lombok.RequiredArgsConstructor;
 
+// https://github.com/ThreeTen/threeten-extra/issues/150
+// https://bugs-stage.openjdk.java.net/browse/JDK-8266847
 public class InstantSourceApp {
 
   public static void main(String[] args) {
-    var system = InstantSource.system();
-    System.out.println(system.millis());
-    System.out.println(system.millis());
-    System.out.println(system.millis());
-    System.out.println(system.millis());
-    System.out.println(system.millis());
-    System.out.println(system.millis());
+
+    var coolService = new SomeService(Clock.systemUTC());
+    coolService.doAwesomeProcess(Instant.now());
   }
 
   @RequiredArgsConstructor
-  public class SomeService {
+  public static class SomeService {
 
-    private final Clock source;
+    private final InstantSource source;
 
-    public void process(Instant endInstant) {
+    public void doAwesomeProcess(Instant endInstant) {
       if (source.instant().isAfter(endInstant)) {
-        // rest of code
+        System.out.println("HERE");
       }
+      source.instant();
     }
   }
 }

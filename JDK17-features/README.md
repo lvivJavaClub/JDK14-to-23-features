@@ -28,7 +28,14 @@ Link to JDK17 features: https://openjdk.java.net/projects/jdk/17/
 ![](./src/main/resources/PRNG_2.png)
 </details>
 </li>
-    <li><h3><input type="checkbox"> JEP 382: New macOS Rendering Pipeline</h3></li>
+    <li><h3><input type="checkbox"> JEP 382: New macOS Rendering Pipeline</h3>
+
+<details>
+  <summary>Details</summary>
+
+    `-Dsun.java2d.metal=true`
+</details>
+</li>
     <li><h3><input type="checkbox"> JEP 391: macOS/AArch64 Port</h3></li>
     <li><h3><input type="checkbox"> JEP 398: Deprecate the Applet API for Removal</h3>
 <details>
@@ -103,7 +110,7 @@ The Foreign Function & Memory API (FFM API) defines classes and interfaces so th
 </details>
 </li>
     <li><h3><input type="checkbox"> JEP 414: Vector API (Second Incubator)</h3></li>
-    <li><h3><input type="checkbox"> JEP 415: Context-Specific Deserialization Filters</h3></li>
+    <li><h3><input type="checkbox"> JEP 4   15: Context-Specific Deserialization Filters</h3></li>
 </ul>
 
 
@@ -111,3 +118,14 @@ The Foreign Function & Memory API (FFM API) defines classes and interfaces so th
 ---
 
 ## 3. Changes in JDK API beyond the JEPs 
+
+- `java.util.HexFormat`
+- `java.time.InstantSource`
+
+
+## Interesting topics
+
+- https://spring.io/blog/2021/09/02/a-java-17-and-jakarta-ee-9-baseline-for-spring-framework-6
+- https://blogs.oracle.com/java/post/moving-the-jdk-to-a-two-year-lts-cadence
+- https://blogs.oracle.com/java/post/free-java-license
+- https://www.optaplanner.org/blog/2021/09/15/HowMuchFasterIsJava17.html
