@@ -2,29 +2,28 @@ package jep420_switch_pattern_matching;
 
 public class SwitchApp {
 
-  sealed interface ParentContainer permits StringContainer, SubContainer {}
-  record StringContainer() implements ParentContainer {}
-  record SubContainer() implements ParentContainer {}
+  sealed interface ParentContainer<T> permits StringContainer, SubContainer {}
+  record StringContainer<T>() implements ParentContainer<String> {}
+  record SubContainer<T>() implements ParentContainer<T> {}
 
   public static void main(String[] args) {
     Integer obj = 10;
-    coverage(obj);
     ParentContainer objectStringContainer = new SubContainer();
-    genericHierarchy(objectStringContainer);
+    StringContainer<String> s = new StringContainer<>();
+    genericHierarchy(s);
   }
 
-  static void coverage(Integer unknown) {
+  static void coverage(String unknown) {
     switch (unknown) {
-      case 10  -> System.out.println("Ten");
-      case Integer i && i > 5 -> System.out.println("More than 5");
+      case "abcd"  -> System.out.println("Ten");
+      case String s && s.length() >2 -> System.out.println("More than 5");
       case null, default -> throw new IllegalStateException("Unexpected ot null value:");
     };
   }
 
-  static void genericHierarchy(ParentContainer parent){
+  static void genericHierarchy(ParentContainer<Object> parent){
     switch (parent) {
-      case SubContainer a -> System.out.println("Medium container");
-      case StringContainer b -> System.out.println("String container");
+      case StringContainer<String> b -> System.out.println("String container");
     }
   }
 }

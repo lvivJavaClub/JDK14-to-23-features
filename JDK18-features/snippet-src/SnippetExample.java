@@ -2,7 +2,7 @@ package jep413_code_snippets;
 
 import java.util.Optional;
 
-public class ShowExample {
+public class SnippetExample {
 
   void show(Optional<String> v) {
     // @start region="example"

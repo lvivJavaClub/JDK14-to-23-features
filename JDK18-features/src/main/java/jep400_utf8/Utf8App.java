@@ -23,7 +23,7 @@ public class Utf8App {
     String text = Files.readString(Path.of("text.txt"));
     System.out.println(text);
 
-    System.out.println("Default charset : " + Charset.defaultCharset());
+    System.out.println("Default charset : " + Charset.forName("dsa", Charset.defaultCharset()));
     System.out.println("file.encoding   : " + System.getProperty("file.encoding"));
     System.out.println("native.encoding : " + System.getProperty("native.encoding"));  }
 
