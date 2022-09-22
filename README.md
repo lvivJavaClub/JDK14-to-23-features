@@ -1,4 +1,4 @@
-# JDK14-15-16-17-features
+# JDK14-15-16-17-18-19-features
 
 ## Prepeare
 
@@ -13,6 +13,8 @@ sdk use java 14.0.2-open
 * Link to JDK15 features https://openjdk.java.net/projects/jdk/15/
 * Link to JDK16 features https://openjdk.java.net/projects/jdk/16/
 * Link to JDK17 features https://openjdk.java.net/projects/jdk/17/
+* Link to JDK17 features https://openjdk.java.net/projects/jdk/18/
+* Link to JDK17 features https://openjdk.java.net/projects/jdk/19/
 
 ## JEP 358: Helpful NullPointerExceptions
 
