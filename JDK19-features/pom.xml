@@ -8,10 +8,10 @@
   <artifactId>JDK17-features</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>JDK17-features</name>
+  <name>JDK19-features</name>
 
   <properties>
-    <java.version>17</java.version>
+    <java.version>19</java.version>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
   </properties>
@@ -19,7 +19,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.20</version>
+      <version>1.18.24</version>
     </dependency>
   </dependencies>
   <build>
@@ -35,6 +35,7 @@
             <compilerArgs>
               <arg>--enable-preview</arg>
               <arg>--add-modules=jdk.incubator.vector</arg>
+              <arg>--add-modules=jdk.incubator.concurrent</arg>
               <arg>--add-modules=java.base</arg>
               <arg>--add-exports=java.base/sun.security.util=ALL-UNNAMED</arg>
             </compilerArgs>
@@ -42,15 +43,5 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>17</source>
-          <target>17</target>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 </project>
