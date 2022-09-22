@@ -17,7 +17,7 @@ record VolunteerRequest(int requestId, LocalDate dueDate) implements Callable<Me
 
   @Override
   public Medicines call() throws InterruptedException {
-    TimeUnit.SECONDS.sleep(3);
+    TimeUnit.SECONDS.sleep(1);
     System.out.println(Thread.currentThread());
 
     LocalDate deliveryDate = randomDateBetween(LocalDate.now(), LocalDate.now().plusDays(10));

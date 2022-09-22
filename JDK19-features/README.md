@@ -1,4 +1,4 @@
-# JDK17 Features
+# JDK19 Features
 
 ## 1. Prepare
 
@@ -33,6 +33,3 @@ Link to JDK19 features: https://openjdk.java.net/projects/jdk/19/
 - `LinkedHashSet.newLinkedHashSet`
 - `DateTimeFormatter.ofLocalizedPattern`
 - `new Locale("lang");` is deprecated
-## 4. Interesting topics and videos
-https://www.happycoders.eu/java/java-19-features/
-https://www.infoq.com/articles/data-oriented-programming-java/
