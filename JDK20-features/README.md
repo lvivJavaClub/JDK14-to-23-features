@@ -1,5 +1,7 @@
 # JDK20 Features ☕️
 
+![img_1.png](img_1.png)
+
 ## 1. Prepare ⚙️
 
 Install Java 20 using `sdk`

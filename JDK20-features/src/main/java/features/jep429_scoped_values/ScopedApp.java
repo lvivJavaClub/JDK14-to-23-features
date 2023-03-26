@@ -5,8 +5,12 @@ import static java.lang.System.out;
 import com.github.javafaker.Faker;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.random.RandomGenerator;
+import jdk.incubator.concurrent.ScopedValue;
+import jdk.incubator.concurrent.StructuredTaskScope;
 import lombok.Builder;
 import lombok.SneakyThrows;
 import lombok.With;
@@ -29,35 +33,44 @@ public class ScopedApp {
   // 4. ScopedValue bounding
   // 5. ScopedValue + StructuredTaskScope
 
-  final static ThreadLocal<PaymentState> PAYMENT_STATE = new ThreadLocal<>();
+  final static ScopedValue<PaymentState> PAYMENT_STATE = ScopedValue.newInstance();
 
   @SneakyThrows
   public static void main(String[] args) {
 
-    PAYMENT_STATE.set(
-        PaymentState.builder()
-            .accountNumber("1241241gds3")
-            .customerId("jaks7241")
-            .amount(10_000)
-            .id("1111")
-            .build()
-    );
-    PaymentClient.process();
+    var state = PaymentState.builder()
+        .accountNumber("1241241gds3")
+        .customerId("jaks7241")
+        .amount(10_000)
+        .id("1111")
+        .build();
 
-    PAYMENT_STATE.remove();
+    ScopedValue.where(PAYMENT_STATE, state).run(PaymentClient::process);
+
+    Thread.sleep(3000);
   }
 
   static class PaymentClient {
 
+    @SneakyThrows
     public static void process() {
-      String status = PaymentService.doTransaction();
-      String customerContact = CustomerCRM.fetchCustomerContact();
+      try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+        Future<String> task1 = scope.fork(PaymentService::doTransaction);
+        Future<String> task2 = scope.fork(CustomerCRM::fetchCustomerContact);
 
-      notifyCustomer(status, customerContact);
+        scope.join();
+        scope.throwIfFailed();
+
+        String status = task1.resultNow();
+        String customerContact = task2.resultNow();
+        ScopedValue.where(PAYMENT_STATE, PAYMENT_STATE.get().masked())
+            .run(() -> notifyCustomer(status, customerContact));
+      }
     }
 
     private static void notifyCustomer(String status, String contact) {
       String paymentId = Objects.requireNonNull(PAYMENT_STATE.get()).id();
+      out.println(PAYMENT_STATE.get().accountNumber());
       out.printf("Payment %s is finished with status %s%n", paymentId, status);
       out.printf("Sending SMS to %s", contact);
     }
@@ -67,6 +80,7 @@ public class ScopedApp {
 
     @SneakyThrows
     public static String doTransaction() {
+      out.println(Thread.currentThread().getName());
       PaymentState paymentState = PAYMENT_STATE.get();
       validateAccount(paymentState.accountNumber());
       out.printf("Performing transaction with id %s and amount %d%n", paymentState.id(), paymentState.amount());
@@ -88,6 +102,8 @@ public class ScopedApp {
 
     @SneakyThrows
     public static String fetchCustomerContact() {
+      out.println(Thread.currentThread().getName());
+
       TimeUnit.SECONDS.sleep(2);
       return FAKER.phoneNumber().phoneNumber();
     }

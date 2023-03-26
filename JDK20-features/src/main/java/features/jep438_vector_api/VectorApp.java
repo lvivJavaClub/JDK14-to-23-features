@@ -1,8 +1,8 @@
 package features.jep438_vector_api;
 
+import java.util.concurrent.FutureTask;
 import java.util.random.RandomGeneratorFactory;
 import jdk.incubator.vector.IntVector;
-import jdk.incubator.vector.VectorOperators;
 import jdk.incubator.vector.VectorSpecies;
 
 // from 64 to 512 bits
@@ -15,13 +15,11 @@ public class VectorApp {
 
   public static void main(String[] args) {
 
-    var randomGenerator = RandomGeneratorFactory.getDefault().create();
-    final int[] a = randomGenerator.ints(8).toArray();
-    final int[] b = randomGenerator.ints(8).toArray();
-    final int[] c = new int[8];
-
-
-  }
+  var randomGenerator = RandomGeneratorFactory.getDefault().create();
+  final int[] a = randomGenerator.ints(8).toArray();
+  final int[] b = randomGenerator.ints(8).toArray();
+  final int[] c = new int[8];
+}
 
   private static void scalarComputationTest(int[] a, int[] b, int[] c) {
     for (int i = 0; i < a.length; i++) {
