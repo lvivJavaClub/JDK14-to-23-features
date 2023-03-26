@@ -19,6 +19,7 @@ sealed interface Expr permits IntExpr, AddExpr, DivExpr, MulExpr {
 public class SwitchPatternMatch {
 
   public static void main(String[] args) {
+
     System.out.println(eval(new AddExpr(new IntExpr(10), new IntExpr(6))));
     System.out.println(eval(new MulExpr(new IntExpr(10), new IntExpr(6))));
     System.out.println(eval(new DivExpr(new IntExpr(100), null)));
