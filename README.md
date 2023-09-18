@@ -16,6 +16,7 @@ sdk use java 14.0.2-open
 * Link to JDK18 features https://openjdk.java.net/projects/jdk/18/
 * Link to JDK19 features https://openjdk.java.net/projects/jdk/19/
 * Link to JDK20 features https://openjdk.java.net/projects/jdk/20/
+* Link to JDK21 features https://openjdk.java.net/projects/jdk/21/
 
 ## JEP 358: Helpful NullPointerExceptions
 
