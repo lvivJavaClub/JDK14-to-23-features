@@ -1,10 +1,14 @@
-package features.jep445_instance_main_methods;
 // java --source 21 --enable-preview NewMainApp.java
 // javac --release 21 --enable-preview NewMainApp.java
 
-public class NewMainApp {
+String greeting = "Regular <Hello, World!> SIMPLE";
+String greeting2 = "Regular <Hello, World!> SIMPLE2";
 
-  public static void main(String[] args) {
-    System.out.println("Regular <Hello, World!>");
-  }
+void main() {
+    sayHello();
+}
+
+void sayHello(){
+    System.out.println(greeting);
+    System.out.println(greeting2);
 }

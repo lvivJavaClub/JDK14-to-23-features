@@ -65,14 +65,10 @@ public class SequencedCollectionsApp {
   private static void mapDemo() {
     System.out.println("MAP demo");
     System.out.println(TEST_SORTED_MAP);
-    Map.Entry<String, Integer> firstEntry = TEST_SORTED_MAP.entrySet().iterator().next();
+    Map.Entry<String, Integer> firstEntry = TEST_SORTED_MAP.sequencedEntrySet().getFirst();
     System.out.println("First: " + firstEntry);
 
-    Iterator<Map.Entry<String, Integer>> iterator = TEST_SORTED_MAP.entrySet().iterator();
-    Map.Entry<String, Integer> lastEntry = null;
-    while (iterator.hasNext()) {
-      lastEntry = iterator.next();
-    }
+    Map.Entry<String, Integer> lastEntry = TEST_SORTED_MAP.sequencedEntrySet().getLast();
     System.out.println("Last: " + lastEntry);
     System.out.println("reversed: none...");
     System.out.println("---");
@@ -83,8 +79,9 @@ public class SequencedCollectionsApp {
     System.out.println("First: " + TEST_SORTED_SET.getFirst());
     System.out.println("Last: " + TEST_SORTED_SET.getLast());
     System.out.println(TEST_SORTED_SET);
-    System.out.print("reversed: none");
-
+    System.out.print("reversed: ");
+    System.out.println(TEST_SORTED_SET.reversed().add("12"));
+    System.out.println(TEST_SORTED_SET);
     System.out.println("---");
   }
 
@@ -101,6 +98,7 @@ public class SequencedCollectionsApp {
     for (var it = TEST_DEQUE.descendingIterator(); it.hasNext();) {
       System.out.print(it.next() + ", ");
     }
+    System.out.println(TEST_DEQUE.reversed());
 
     System.out.println();
     System.out.println("---");
@@ -108,16 +106,14 @@ public class SequencedCollectionsApp {
 
   private static void listDemo() {
     System.out.println("LIST demo");
-    System.out.println("First: " + TEST_LIST.get(0));
-    System.out.println("Last: " + TEST_LIST.get(TEST_LIST.size() - 1));
+    System.out.println("First: " + TEST_LIST.getFirst());
+    System.out.println("Last: " + TEST_LIST.getLast());
 
-    TEST_LIST.add(0, "minus one");
-    TEST_LIST.add("infinity");
+    TEST_LIST.addFirst( "minus one");
+    TEST_LIST.addLast("infinity");
     System.out.println(TEST_LIST);
     System.out.print("reversed: ");
-    for (var it = TEST_LIST.listIterator(TEST_LIST.size()); it.hasPrevious();) {
-      System.out.print(it.previous() + ", ");
-    }
+    System.out.println(TEST_LIST.reversed());
     System.out.println();
     System.out.println("---");
   }
