@@ -1,5 +1,5 @@
-// java --source 21 --enable-preview NewMainApp.java
-// javac --release 21 --enable-preview NewMainApp.java
+// java --source 21 --enable-preview MultifileApp.java
+// javac --release 21 --enable-preview MultifileApp.java
 
 String greeting = "Regular <Hello, World!> SIMPLE";
 String greeting2 = "Regular <Hello, World!> SIMPLE2";
