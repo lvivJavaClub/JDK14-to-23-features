@@ -1,12 +1,12 @@
-# JDK14-15-16-17-18-19-20-21-22-features
+# JDK14-15-16-17-18-19-20-21-22-23-features
 
-## Prepeare
+## Prepare
 
-Install java 14 use `sdk`
+Install Java using `sdkman`
 
 ```bash
-sdk install java 14.0.2-open
-sdk use java 14.0.2-open
+sdk install java {version}-open
+sdk use java {version}-open
 ```
 
 * Link to JDK14 features https://openjdk.java.net/projects/jdk/14/
@@ -18,19 +18,4 @@ sdk use java 14.0.2-open
 * Link to JDK20 features https://openjdk.java.net/projects/jdk/20/
 * Link to JDK21 features https://openjdk.java.net/projects/jdk/21/
 * Link to JDK22 features https://openjdk.java.net/projects/jdk/22/
-* 
-## JEP 358: Helpful NullPointerExceptions
-
-add VM param `-XX:+ShowCodeDetailsInExceptionMessages`
-
-
-## JEP 343: Packaging Tool (Incubator)
-
-```bash
-mvn clean javafx:run
-```
-
-```bash
-jpackage --input target --name JPackageDemoApp --main-jar JDK14-features-0.0.1-SNAPSHOT-jar-with-dependencies.jar --main-class n04_jep343_Packaging_Tool_Incubator.App --type dmg --java-options '--enable-preview'
-WARNING: Using incubator modules: jdk.incubator.jpackage
-```
+* Link to JDK23 features https://openjdk.java.net/projects/jdk/23/
