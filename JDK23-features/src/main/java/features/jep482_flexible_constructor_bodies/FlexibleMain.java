@@ -5,7 +5,9 @@ import java.time.LocalDate;
 public class FlexibleMain {
 
   public static void main(String[] args) {
-    System.out.println(new BankTransfer("1234", 1000.0, LocalDate.now().minusDays(10), "Someone111", "Somebody22"));
+    var bankTransfer = new BankTransfer("1234", 1000.0, LocalDate.now().minusDays(10), "Somebody22", "Somebody22");
+    System.out.println(bankTransfer.receiverBankAccount);
+    System.out.println(bankTransfer.senderBankAccount);
 
   }
 
@@ -42,17 +44,17 @@ public class FlexibleMain {
 
     // Constructor uses auxiliary method to prepare arguments for superclass constructor
     public BankTransfer(String transactionId, double amount, LocalDate date, String sender, String receiver) {
-      super(transactionId, amount, date);
       this.senderBankAccount = validateBankAccount(sender);
       this.receiverBankAccount = validateBankAccount(receiver);
+      super(transactionId, amount, date);
     }
 
-   /* @Override
+    @Override
     protected void validate() {
       super.validate();
       if (senderBankAccount.equals(receiverBankAccount)) {
         throw new IllegalArgumentException("Sender and receiver accounts cannot be the same.");
       }
-    }*/
+    }
   }
 }

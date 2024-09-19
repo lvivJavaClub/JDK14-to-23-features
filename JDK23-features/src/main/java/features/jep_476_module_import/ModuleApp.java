@@ -1,17 +1,15 @@
 package features.jep_476_module_import;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import module java.base;
+import module java.sql;
+
 
 // 1. Module Import Declarations
 // 2. Ambiguous Imports?
 
 public class ModuleApp {
   public static void main(String[] args) {
+
     List<Employee> employees = List.of(
         new Employee("Alice", "HR", 70000),
         new Employee("Bob", "IT", 90000),

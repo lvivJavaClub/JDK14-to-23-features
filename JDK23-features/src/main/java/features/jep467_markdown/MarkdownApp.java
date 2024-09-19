@@ -1,5 +1,7 @@
 package features.jep467_markdown;
 
+import java.util.function.Consumer;
+
 public class MarkdownApp {
 
   public static void main(String[] args) {

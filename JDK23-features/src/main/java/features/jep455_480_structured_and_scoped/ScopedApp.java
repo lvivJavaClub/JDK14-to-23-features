@@ -34,6 +34,8 @@ public class ScopedApp {
         System.err.println("Error processing API request for request ID: " + REQUEST_ID.get() + ": " + e.getMessage());
       }
     });
+
+    System.out.println(REQUEST_ID.get());
   }
 
   // Simulate fetching user information from an API

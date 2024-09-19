@@ -15,7 +15,7 @@ public class ClassFileApp {
 
     ClassFile cf = ClassFile.of();
     ClassModel classModel = cf.parse(classBytes);
-    
+
     long publicMethodCount = classModel.methods().stream()
         .filter(method -> method.flags().has(AccessFlag.PUBLIC))
         .count();
